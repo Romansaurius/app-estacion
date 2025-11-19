@@ -38,11 +38,23 @@ function getClientIP() {
 }
 
 function sendEmail($to, $subject, $body) {
+    // Log para debug
+    error_log("Intentando enviar email a: $to");
+    error_log("Asunto: $subject");
+    
     // Usar función mail() básica de PHP
     $headers = "MIME-Version: 1.0" . "\r\n";
     $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-    $headers .= 'From: App Estación <9909@mattprofe.com.ar>' . "\r\n";
+    $headers .= 'From: App Estación <noreply@mattprofe.com.ar>' . "\r\n";
     
-    return mail($to, $subject, $body, $headers);
+    $result = mail($to, $subject, $body, $headers);
+    
+    if ($result) {
+        error_log("Email enviado exitosamente a: $to");
+    } else {
+        error_log("Error enviando email a: $to");
+    }
+    
+    return $result;
 }
 ?>
