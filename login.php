@@ -12,7 +12,7 @@ if ($_POST) {
     $password = $_POST['password'] ?? '';
     
     if ($email && $password) {
-        $stmt = $pdo->prepare("SELECT * FROM usuarios WHERE email = ?");
+        $stmt = $pdo->prepare("SELECT * FROM usuarios_estacion WHERE email = ?");
         $stmt->execute([$email]);
         $user = $stmt->fetch();
         

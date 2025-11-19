@@ -5,14 +5,14 @@ $message = '';
 $token = $_GET['token'] ?? '';
 
 if ($token) {
-    $stmt = $pdo->prepare("SELECT * FROM usuarios WHERE token = ?");
+    $stmt = $pdo->prepare("SELECT * FROM usuarios_estacion WHERE token = ?");
     $stmt->execute([$token]);
     $user = $stmt->fetch();
     
     if ($user) {
         $token_action = generateToken();
         
-        $stmt = $pdo->prepare("UPDATE usuarios SET bloqueado = 1, token_action = ?, blocked_date = NOW() WHERE id = ?");
+        $stmt = $pdo->prepare("UPDATE usuarios_estacion SET bloqueado = 1, token_action = ?, blocked_date = NOW() WHERE id = ?");
         $stmt->execute([$token_action, $user['id']]);
         
         // Enviar email de bloqueo

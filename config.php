@@ -2,10 +2,10 @@
 session_start();
 
 // Configuración de base de datos
-define('DB_HOST', 'localhost');
-define('DB_NAME', 'app_estacion');
-define('DB_USER', 'root');
-define('DB_PASS', '');
+define('DB_HOST', 'mattprofe.com.ar');
+define('DB_NAME', '9909');
+define('DB_USER', '9909');
+define('DB_PASS', 'buey.sauce.silla');
 
 // Conexión PDO
 try {

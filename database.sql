@@ -1,4 +1,4 @@
-CREATE TABLE usuarios (
+CREATE TABLE usuarios_estacion (
     id INT AUTO_INCREMENT PRIMARY KEY,
     token VARCHAR(255) NOT NULL UNIQUE,
     email VARCHAR(255) NOT NULL UNIQUE,

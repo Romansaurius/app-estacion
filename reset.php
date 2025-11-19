@@ -11,7 +11,7 @@ $token_action = $_GET['token_action'] ?? '';
 $validToken = false;
 
 if ($token_action) {
-    $stmt = $pdo->prepare("SELECT * FROM usuarios WHERE token_action = ? AND (bloqueado = 1 OR recupero = 1)");
+    $stmt = $pdo->prepare("SELECT * FROM usuarios_estacion WHERE token_action = ? AND (bloqueado = 1 OR recupero = 1)");
     $stmt->execute([$token_action]);
     $user = $stmt->fetch();
     
@@ -26,7 +26,7 @@ if ($token_action) {
                 if ($password === $confirm_password) {
                     $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
                     
-                    $stmt = $pdo->prepare("UPDATE usuarios SET contraseña = ?, token_action = NULL, bloqueado = 0, recupero = 0 WHERE id = ?");
+                    $stmt = $pdo->prepare("UPDATE usuarios_estacion SET contraseña = ?, token_action = NULL, bloqueado = 0, recupero = 0 WHERE id = ?");
                     $stmt->execute([$hashedPassword, $user['id']]);
                     
                     // Enviar email de confirmación

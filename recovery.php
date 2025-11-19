@@ -12,14 +12,14 @@ if ($_POST) {
     $email = $_POST['email'] ?? '';
     
     if ($email) {
-        $stmt = $pdo->prepare("SELECT * FROM usuarios WHERE email = ?");
+        $stmt = $pdo->prepare("SELECT * FROM usuarios_estacion WHERE email = ?");
         $stmt->execute([$email]);
         $user = $stmt->fetch();
         
         if ($user) {
             $token_action = generateToken();
             
-            $stmt = $pdo->prepare("UPDATE usuarios SET recupero = 1, token_action = ?, recover_date = NOW() WHERE id = ?");
+            $stmt = $pdo->prepare("UPDATE usuarios_estacion SET recupero = 1, token_action = ?, recover_date = NOW() WHERE id = ?");
             $stmt->execute([$token_action, $user['id']]);
             
             // Enviar email de recuperación

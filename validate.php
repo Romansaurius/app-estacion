@@ -9,12 +9,12 @@ $message = '';
 $token_action = $_GET['token_action'] ?? '';
 
 if ($token_action) {
-    $stmt = $pdo->prepare("SELECT * FROM usuarios WHERE token_action = ? AND activo = 0");
+    $stmt = $pdo->prepare("SELECT * FROM usuarios_estacion WHERE token_action = ? AND activo = 0");
     $stmt->execute([$token_action]);
     $user = $stmt->fetch();
     
     if ($user) {
-        $stmt = $pdo->prepare("UPDATE usuarios SET activo = 1, token_action = NULL, active_date = NOW() WHERE id = ?");
+        $stmt = $pdo->prepare("UPDATE usuarios_estacion SET activo = 1, token_action = NULL, active_date = NOW() WHERE id = ?");
         $stmt->execute([$user['id']]);
         
         // Enviar email de confirmación

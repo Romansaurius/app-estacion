@@ -19,7 +19,7 @@ if ($_POST) {
             $error = 'Las contraseñas no coinciden';
         } else {
             // Verificar si el email ya existe
-            $stmt = $pdo->prepare("SELECT id FROM usuarios WHERE email = ?");
+            $stmt = $pdo->prepare("SELECT id FROM usuarios_estacion WHERE email = ?");
             $stmt->execute([$email]);
             
             if ($stmt->fetch()) {
@@ -29,7 +29,7 @@ if ($_POST) {
                 $token_action = generateToken();
                 $hashedPassword = password_hash($password, PASSWORD_DEFAULT);
                 
-                $stmt = $pdo->prepare("INSERT INTO usuarios (token, email, nombres, contraseña, token_action) VALUES (?, ?, ?, ?, ?)");
+                $stmt = $pdo->prepare("INSERT INTO usuarios_estacion (token, email, nombres, contraseña, token_action) VALUES (?, ?, ?, ?, ?)");
                 $stmt->execute([$token, $email, $nombres, $hashedPassword, $token_action]);
                 
                 // Enviar email de activación
