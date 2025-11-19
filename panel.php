@@ -1,3 +1,10 @@
+<?php
+require_once 'config.php';
+
+if (!isLoggedIn()) {
+    redirectTo('login.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -13,6 +20,9 @@
         <div class="header">
             <a href="index.php" class="back-btn">
                 <i class="fas fa-chevron-left"></i>
+            </a>
+            <a href="logout.php" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i> Salir
             </a>
             <div class="datetime">
                 <div id="fecha"></div>

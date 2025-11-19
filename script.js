@@ -22,7 +22,7 @@ async function cargarEstaciones() {
 
 function crearTarjetaEstacion(estacion) {
     const card = document.createElement('a');
-    card.href = `panel.html?chipid=${estacion.chipid}`;
+    card.href = `panel.php?chipid=${estacion.chipid}`;
     card.className = `estacion-card ${estacion.dias_inactivo > 0 ? 'inactiva' : ''}`;
     
     const isInactiva = parseInt(estacion.dias_inactivo) > 0;

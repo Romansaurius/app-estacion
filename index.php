@@ -1,3 +1,10 @@
+<?php
+require_once 'config.php';
+
+if (!isLoggedIn()) {
+    redirectTo('login.php');
+}
+?>
 <!DOCTYPE html>
 <html lang="es">
 <head>
@@ -9,7 +16,10 @@
 </head>
 <body>
     <div class="container">
-        <h1 class="title">ESTACIONES</h1>
+        <div class="header">
+            <h1 class="title">ESTACIONES</h1>
+            <a href="logout.php" class="logout-btn">Salir</a>
+        </div>
         <div id="estaciones-list" class="estaciones-list">
             <!-- Las estaciones se cargarán aquí dinámicamente -->
         </div>
