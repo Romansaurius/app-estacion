@@ -1,0 +1,158 @@
+<?php
+require_once 'config.php';
+
+if (!isLoggedIn()) {
+    redirectTo('login.php');
+}
+?>
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Estación</title>
+    <link rel="stylesheet" href="panel-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="index.php" class="back-btn">
+                <i class="fas fa-chevron-left"></i>
+            </a>
+            <a href="logout.php" class="logout-btn">
+                <i class="fas fa-sign-out-alt"></i> Salir
+            </a>
+            <div class="datetime">
+                <div id="fecha"></div>
+                <div id="hora"></div>
+            </div>
+        </div>
+        
+        <div class="location">
+            <i class="fas fa-map-marker-alt"></i>
+            <span id="ubicacion">Cargando...</span>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="temperatura">Temperatura</button>
+            <button class="tab-btn" data-tab="humedad">Humedad</button>
+            <button class="tab-btn" data-tab="viento">Viento</button>
+            <button class="tab-btn" data-tab="presion">Presión</button>
+            <button class="tab-btn" data-tab="incendio">Riesgo</button>
+        </div>
+
+        <div class="main-content">
+            <div class="left-panel">
+                <div id="temperatura-panel" class="panel-section active">
+                    <div class="metric-header">
+                        <i class="fas fa-thermometer-half"></i> TEMPERATURA
+                    </div>
+                    <div class="metric-main">
+                        <span id="temp-value" class="metric-value-large">--</span>
+                        <span class="metric-unit">°C</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="tempChart"></canvas>
+                    </div>
+                </div>
+
+                <div id="humedad-panel" class="panel-section">
+                    <div class="metric-header">
+                        <i class="fas fa-tint"></i> HUMEDAD
+                    </div>
+                    <div class="metric-main">
+                        <span id="humidity-value" class="metric-value-large">--</span>
+                        <span class="metric-unit">%</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="humidityChart"></canvas>
+                    </div>
+                </div>
+
+                <div id="viento-panel" class="panel-section">
+                    <div class="metric-header">
+                        <i class="fas fa-wind"></i> VIENTO
+                    </div>
+                    <div class="metric-main">
+                        <span id="wind-value" class="metric-value-large">--</span>
+                        <span class="metric-unit">Km/H</span>
+                        <div class="wind-direction">
+                            <i class="fas fa-compass"></i>
+                            <span id="wind-dir">--</span>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="windChart"></canvas>
+                    </div>
+                </div>
+
+                <div id="presion-panel" class="panel-section">
+                    <div class="metric-header">
+                        <i class="fas fa-arrow-down"></i> PRESIÓN
+                    </div>
+                    <div class="metric-main">
+                        <span id="pressure-value" class="metric-value-large">--</span>
+                        <span class="metric-unit">hPa</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="pressureChart"></canvas>
+                    </div>
+                </div>
+
+                <div id="incendio-panel" class="panel-section">
+                    <div class="metric-header">
+                        <i class="fas fa-fire"></i> RIESGO DE INCENDIO
+                    </div>
+                    <div class="metric-main">
+                        <span id="fire-risk" class="metric-label-large">--</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="fireChart"></canvas>
+                    </div>
+                </div>
+            </div>
+
+            <div class="right-panel">
+                <div class="metric-card temp-card">
+                    <i class="fas fa-thermometer-half"></i>
+                    <span id="temp-card" class="metric-value">--°C</span>
+                </div>
+
+                <div class="metric-card fire-card">
+                    <i class="fas fa-fire"></i>
+                    <span id="fire-card" class="metric-label">--</span>
+                </div>
+
+                <div class="metric-card humidity-card">
+                    <i class="fas fa-tint"></i>
+                    <span id="humidity-card" class="metric-value">--%</span>
+                </div>
+
+                <div class="metric-card pressure-card">
+                    <i class="fas fa-arrow-down"></i>
+                    <span id="pressure-card" class="metric-value">--hPa</span>
+                </div>
+
+                <div class="metric-card wind-card">
+                    <i class="fas fa-wind"></i>
+                    <div class="wind-info">
+                        <span id="wind-card" class="metric-value">--Km/H</span>
+                        <div class="wind-direction">
+                            <i class="fas fa-compass"></i>
+                            <span id="wind-dir-card">--</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="update-info">
+            Última actualización: <span id="last-update">--</span>
+        </div>
+    </div>
+
+    <script src="panel-script.js"></script>
+</body>
+</html>
