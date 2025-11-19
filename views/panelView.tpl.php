@@ -17,8 +17,15 @@
 	<script>
 		async function cargarEstaciones() {
 			try {
+				console.log('Cargando desde:', '{{ API_URL }}');
 				const response = await fetch('{{ API_URL }}');
+				
+				if (!response.ok) {
+					throw new Error(`HTTP ${response.status}`);
+				}
+				
 				const data = await response.json();
+				console.log('Datos recibidos:', data);
 				
 				const loading = document.getElementById('loading');
 				const list = document.getElementById('estacionList');
@@ -35,7 +42,8 @@
 					list.appendChild(clone);
 				});
 			} catch (error) {
-				document.getElementById('loading').textContent = 'Error al cargar estaciones';
+				console.error('Error:', error);
+				document.getElementById('loading').textContent = 'Error: ' + error.message;
 			}
 		}
 		
