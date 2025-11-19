@@ -1,6 +1,14 @@
 <?php
 session_start();
 
+require_once '/home/9909/public_html/PHPMailer/src/Exception.php';
+require_once '/home/9909/public_html/PHPMailer/src/PHPMailer.php';
+require_once '/home/9909/public_html/PHPMailer/src/SMTP.php';
+
+use PHPMailer\PHPMailer\PHPMailer;
+use PHPMailer\PHPMailer\SMTP;
+use PHPMailer\PHPMailer\Exception;
+
 // Configuración de base de datos
 define('DB_HOST', 'mattprofe.com.ar');
 define('DB_NAME', '9909');
@@ -38,14 +46,6 @@ function getClientIP() {
 }
 
 function sendEmail($to, $subject, $body) {
-    require_once '/home/9909/public_html/PHPMailer/src/Exception.php';
-    require_once '/home/9909/public_html/PHPMailer/src/PHPMailer.php';
-    require_once '/home/9909/public_html/PHPMailer/src/SMTP.php';
-    
-    use PHPMailer\PHPMailer\PHPMailer;
-    use PHPMailer\PHPMailer\SMTP;
-    use PHPMailer\PHPMailer\Exception;
-    
     $mail = new PHPMailer(true);
     
     try {
