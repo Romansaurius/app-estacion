@@ -38,8 +38,37 @@ function getClientIP() {
 }
 
 function sendEmail($to, $subject, $body) {
-    // Simulación de envío de email
-    error_log("EMAIL TO: $to\nSUBJECT: $subject\nBODY: $body");
-    return true;
+    require_once '/home/9909/public_html/PHPMailer/src/Exception.php';
+    require_once '/home/9909/public_html/PHPMailer/src/PHPMailer.php';
+    require_once '/home/9909/public_html/PHPMailer/src/SMTP.php';
+    
+    use PHPMailer\PHPMailer\PHPMailer;
+    use PHPMailer\PHPMailer\SMTP;
+    use PHPMailer\PHPMailer\Exception;
+    
+    $mail = new PHPMailer(true);
+    
+    try {
+        $mail->isSMTP();
+        $mail->Host       = 'mattprofe.com.ar';
+        $mail->SMTPAuth   = true;
+        $mail->Username   = '9909@mattprofe.com.ar';
+        $mail->Password   = 'buey.sauce.silla';
+        $mail->SMTPSecure = PHPMailer::ENCRYPTION_STARTTLS;
+        $mail->Port       = 587;
+        
+        $mail->setFrom('9909@mattprofe.com.ar', 'App Estación');
+        $mail->addAddress($to);
+        
+        $mail->isHTML(true);
+        $mail->Subject = $subject;
+        $mail->Body    = $body;
+        
+        $mail->send();
+        return true;
+    } catch (Exception $e) {
+        error_log("Error enviando email: {$mail->ErrorInfo}");
+        return false;
+    }
 }
 ?>
