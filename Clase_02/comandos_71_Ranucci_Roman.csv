@@ -1,0 +1,15 @@
+cd|change directory|Sirve para mostrar el nombre del directorio actual y también, permite cambiar de directorio especificando la ruta del directorio destino  
+ls|list|Muestra la lista de archivos y carpetas contenidos en un directorio  
+clear|clear terminal screen|Limpia la pantalla de la terminal, eliminando todo el texto visible  
+cp|copy|Copia archivos o directorios de una ubicación a otra  
+mv|move|Mueve o renombra archivos y directorios  
+rm|remove|Elimina archivos o directorios del sistema de archivos  
+uname|unix name|Muestra información sobre el sistema operativo, como el nombre y la versión  
+su|substitute user|Permite cambiar de usuario, generalmente para obtener privilegios de administrador  
+sudo|superuser do|Ejecuta comandos con privilegios de superusuario o administrador  
+df|disk free|Muestra el espacio disponible y utilizado en los sistemas de archivos montados  
+top|table of processes|Muestra en tiempo real los procesos activos del sistema y el uso de recursos  
+kill|kill process|Envía señales a procesos, generalmente para terminarlos  
+nano|nano editor|Es un editor de texto simple y fácil de usar dentro de la terminal  
+mkdir|make directory|Crea nuevos directorios (carpetas)  
+lspci|list pci devices|Muestra información detallada sobre todos los dispositivos PCI conectados al sistema

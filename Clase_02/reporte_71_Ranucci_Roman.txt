@@ -1,0 +1,59 @@
+
+
+1) 118.37.88.12 
+
+a)kt.com
+b)Servicios y Puertos 
+FTP - 21  Cerrado
+SMTP - 25 Cerrado	
+HTTP - 80 Cerrado	
+POP3 - 110 Cerrado	
+IMAP - 143 Cerrado	
+HTTPS - 443 Cerrado
+c)Esta Cerrado 
+d)País: Korea 	
+Región: Gyeonggi-do	
+Ciudad: Seongnam
+Código Postal: 13118	
+Latitud: 37.42063	
+Longitud: 127.12672
+e)Korea Telecom (Seoul)
+f)No es Maliciosa
+
+2) 104.131.190.193
+a) ptp.com
+b)Servicios y Puertos 
+FTP - 21  Abierto
+SMTP - 25 Abierto
+HTTP - 80 Abierto
+POP3 - 110 Abierto
+IMAP - 143 Abierto	
+HTTPS - 443 Error
+c)Si abierto
+d)País: Russian Federation 	
+Región: Samarskaya oblast'	
+Ciudad: Samara
+Código Postal: 404146	
+Latitud: 53.20029	
+Longitud: 50.15078
+e)PtP(Russia, Yelets)
+f)No es Maliciosa 
+
+3)104.131.190.193
+a)digitalocean.com
+b)Servicios y Puertos 
+FTP - 21  Cerrado
+SMTP - 25 Cerrado	
+HTTP - 80 Cerrado	
+POP3 - 110 Cerrado	
+IMAP - 143 Cerrado	
+HTTPS - 443 Cerrado
+c)Esta Cerrado 
+d)País: United States of America 
+Región: New Jersey	
+Ciudad: Clifton
+Código Postal: 07012	
+Latitud: 40.85859	
+Longitud: -74.16361
+e)DigitalOcean, LLC(U.S.A, clifton, New Jersey)
+f)No es Maliciosa

@@ -1,0 +1,16 @@
+cd|Debemos de especificar en que carpeta nos queremos parar*<br>
+ls|Muestra las carpetas donde estabamos parados*<br>
+clear|Dice que el comando no fue encontrado*<br>
+cp|Este comando en si no hace nada si no esta acompañado del archivo que se desea copiar*<br>
+mv|Este comando en si no hace nada si no esta acompañado del archivo que se desea mover*<br>
+rm|Elimina archivos o directorios del sistema de archivos*<br>
+uname|Muestra información sobre el sistema operativo del servidor, en este caso linux*<br>
+su|Dice que tiene que ser ejecutado desde la terminal*<br>
+sudo|Comando no encontrado, esto se debe porque no tenemos permisos necesarios*<br>
+df|Dice que no puede leer la cantidad de archivos*<br>
+top|Comando no encontrado, esto se debe porque no tenemos permisos necesarios*<br>
+kill|El comando en si no hace nada, debes de acompañarlo con lo que deberia de eliminar*<br>
+nano|Abre un editor de texto donde depende donde estes parado puedes editar ciertos archivos*<br>
+mkdir|Da la opcion de crear una carpeta*<br>
+lspci|Comando no encontrado, esto se debe porque no tenemos permisos necesarios*<br>
+<center><h4>Ranucci Román - 7°1°</h4></center>
