@@ -38,23 +38,40 @@ function getClientIP() {
 }
 
 function sendEmail($to, $subject, $body) {
-    // Log para debug
-    error_log("Intentando enviar email a: $to");
-    error_log("Asunto: $subject");
+    include_once 'credenciales.php';
+    include_once 'Mailer/src/PHPMailer.php';
+    include_once 'Mailer/src/SMTP.php';
+    include_once 'Mailer/src/Exception.php';
     
-    // Usar función mail() básica de PHP
-    $headers = "MIME-Version: 1.0" . "\r\n";
-    $headers .= "Content-type:text/html;charset=UTF-8" . "\r\n";
-    $headers .= 'From: App Estación <noreply@mattprofe.com.ar>' . "\r\n";
+    $mail = new PHPMailer\PHPMailer\PHPMailer();
     
-    $result = mail($to, $subject, $body, $headers);
-    
-    if ($result) {
-        error_log("Email enviado exitosamente a: $to");
-    } else {
-        error_log("Error enviando email a: $to");
+    try {
+        $mail->isSMTP();
+        $mail->SMTPDebug = 0;
+        $mail->Host = HOST;
+        $mail->Port = PORT;
+        $mail->SMTPAuth = SMTP_AUTH;
+        $mail->SMTPSecure = SMTP_SECURE;
+        $mail->Username = REMITENTE;
+        $mail->Password = PASSWORD;
+        
+        $mail->setFrom(REMITENTE, NOMBRE);
+        $mail->addAddress($to);
+        
+        $mail->isHTML(true);
+        $mail->Subject = $subject;
+        $mail->Body = $body;
+        
+        if ($mail->send()) {
+            error_log("Email enviado exitosamente a: $to");
+            return true;
+        } else {
+            error_log("Error PHPMailer: " . $mail->ErrorInfo);
+            return false;
+        }
+    } catch (Exception $e) {
+        error_log("Error enviando email: " . $e->getMessage());
+        return false;
     }
-    
-    return $result;
 }
 ?>
