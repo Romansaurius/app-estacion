@@ -17,28 +17,11 @@
 	<script>
 		async function cargarEstaciones() {
 			try {
-				console.log('Cargando desde:', '{{ API_URL }}');
 				const response = await fetch('{{ API_URL }}');
-				
-				if (!response.ok) {
-					throw new Error(`HTTP ${response.status}`);
-				}
-				
 				const data = await response.json();
-				console.log('Datos recibidos:', data);
-				
 				mostrarEstaciones(data);
-				
 			} catch (error) {
-				console.error('Error API:', error);
-				// Usar datos de prueba como fallback
-				const datosPrueba = [
-					{chipid: '001', apodo: 'Estación Centro', ubicacion: 'Buenos Aires', visitas: 150},
-					{chipid: '002', apodo: 'Estación Norte', ubicacion: 'Córdoba', visitas: 89},
-					{chipid: '003', apodo: 'Estación Sur', ubicacion: 'Mendoza', visitas: 203}
-				];
-				mostrarEstaciones(datosPrueba);
-				document.getElementById('loading').textContent = 'Usando datos de prueba (API no disponible)';
+				document.getElementById('loading').textContent = 'Error al cargar estaciones';
 			}
 		}
 		

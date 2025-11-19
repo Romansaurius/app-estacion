@@ -6,6 +6,8 @@
 		<div id="detalleContent" style="display: none;">
 			<h2 id="apodo"></h2>
 			<p><strong>Ubicación:</strong> <span id="ubicacion"></span></p>
+			<p><strong>ChipID:</strong> <span id="chipidDisplay"></span></p>
+			<a id="verDatosReales" href="#" target="_blank" class="btn">Ver Datos en Tiempo Real</a>
 			<a href="?slug=panel" class="btn">Volver al Panel</a>
 		</div>
 	</div>
@@ -19,13 +21,7 @@
 				const data = await response.json();
 				mostrarDetalle(data);
 			} catch (error) {
-				// Usar datos de prueba como fallback
-				const datosPrueba = [
-					{chipid: '001', apodo: 'Estación Centro', ubicacion: 'Buenos Aires', visitas: 150},
-					{chipid: '002', apodo: 'Estación Norte', ubicacion: 'Córdoba', visitas: 89},
-					{chipid: '003', apodo: 'Estación Sur', ubicacion: 'Mendoza', visitas: 203}
-				];
-				mostrarDetalle(datosPrueba);
+				document.getElementById('loading').textContent = 'Error al cargar estación';
 			}
 		}
 		

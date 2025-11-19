@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel Estación</title>
+    <link rel="stylesheet" href="panel-styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <a href="index.html" class="back-btn">
+                <i class="fas fa-chevron-left"></i>
+            </a>
+            <div class="datetime">
+                <div id="fecha"></div>
+                <div id="hora"></div>
+            </div>
+        </div>
+        
+        <div class="location">
+            <i class="fas fa-map-marker-alt"></i>
+            <span id="ubicacion">Buenos Aires, Tortuguitas</span>
+        </div>
+
+        <div class="main-content">
+            <div class="left-panel">
+                <div class="temp-section">
+                    <div class="temp-header">
+                        <i class="fas fa-thermometer-half"></i> TEMPERATURA
+                    </div>
+                    <div class="temp-main">
+                        <span class="temp-value">25</span>
+                        <span class="temp-decimal">.30</span>
+                        <span class="temp-unit">°C</span>
+                    </div>
+                    <div class="temp-minmax">
+                        <div class="temp-item">
+                            <span class="label">Máxima</span>
+                            <span class="value">28.30°C</span>
+                        </div>
+                        <div class="temp-item">
+                            <span class="label">Mínima</span>
+                            <span class="value">15.00°C</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="sensation-section">
+                    <div class="sensation-header">
+                        <i class="fas fa-child"></i> SENSACIÓN
+                    </div>
+                    <div class="sensation-main">
+                        <span class="sensation-value">0</span>
+                        <span class="sensation-decimal">.00</span>
+                        <span class="sensation-unit">°C</span>
+                    </div>
+                    <div class="sensation-minmax">
+                        <div class="sensation-item">
+                            <span class="label">Máxima</span>
+                            <span class="value">0.00°C</span>
+                        </div>
+                        <div class="sensation-item">
+                            <span class="label">Mínima</span>
+                            <span class="value">0.00°C</span>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="chart-container">
+                    <canvas id="tempChart"></canvas>
+                </div>
+            </div>
+
+            <div class="right-panel">
+                <div class="metric-card temp-card">
+                    <i class="fas fa-thermometer-half"></i>
+                    <span class="metric-value">25°C</span>
+                </div>
+
+                <div class="metric-card fire-card">
+                    <i class="fas fa-fire"></i>
+                    <span class="metric-label">Muy bajo</span>
+                </div>
+
+                <div class="metric-card humidity-card">
+                    <i class="fas fa-tint"></i>
+                    <span class="metric-value">50%</span>
+                </div>
+
+                <div class="metric-card pressure-card">
+                    <i class="fas fa-arrow-down"></i>
+                    <span class="metric-value">0hPa</span>
+                </div>
+
+                <div class="metric-card wind-card">
+                    <i class="fas fa-wind"></i>
+                    <div class="wind-info">
+                        <span class="metric-value">0Km/H</span>
+                        <div class="wind-direction">
+                            <i class="fas fa-compass"></i>
+                            <span>Indeterminado</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="panel-script.js"></script>
+</body>
+</html>
