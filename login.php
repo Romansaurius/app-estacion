@@ -35,7 +35,7 @@ if ($_POST) {
                         <p>Navegador: $userAgent</p>
                         <a href='http://mattprofe.com.ar/alumno/9909/app-estacion/blocked.php?token={$user['token']}' style='background:#ff4444;color:white;padding:10px;text-decoration:none;'>No fui yo, bloquear cuenta</a>
                     ";
-                    sendEmail($user['email'], 'Inicio de sesión - App Estación', $emailBody);
+                    sendEmail($user['email'], 'Inicio de sesion - App Estacion', $emailBody);
                     
                     redirectTo('index.php');
                 }
@@ -49,7 +49,7 @@ if ($_POST) {
                     <p>Navegador: $userAgent</p>
                     <a href='http://mattprofe.com.ar/alumno/9909/app-estacion/blocked.php?token={$user['token']}' style='background:#ff4444;color:white;padding:10px;text-decoration:none;'>No fui yo, bloquear cuenta</a>
                 ";
-                sendEmail($user['email'], 'Intento de acceso inválido - App Estación', $emailBody);
+                sendEmail($user['email'], 'Intento de acceso invalido - App Estacion', $emailBody);
                 $error = 'Credenciales no válidas';
             }
         } else {
