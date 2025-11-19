@@ -51,6 +51,11 @@ function actualizarFechaHora() {
 
 async function cargarDatos() {
     try {
+        // Cargar información de la estación si no la tenemos
+        if (document.getElementById('ubicacion').textContent === 'Cargando...') {
+            await cargarInfoEstacion();
+        }
+        
         const response = await fetch(`datos-estacion.php?chipid=${chipid}`);
         const datos = await response.json();
         
@@ -85,6 +90,21 @@ async function cargarDatos() {
         
     } catch (error) {
         console.error('Error al cargar datos:', error);
+    }
+}
+
+async function cargarInfoEstacion() {
+    try {
+        const response = await fetch('api.php');
+        const estaciones = await response.json();
+        
+        const estacion = estaciones.find(e => e.chipid === chipid);
+        if (estacion) {
+            document.getElementById('ubicacion').textContent = estacion.ubicacion;
+        }
+    } catch (error) {
+        console.error('Error al cargar info de estación:', error);
+        document.getElementById('ubicacion').textContent = 'Ubicación no disponible';
     }
 }
 

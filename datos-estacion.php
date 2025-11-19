@@ -37,7 +37,7 @@ try {
     $datos = [
         'temperatura' => rand(15, 35) + (rand(0, 99) / 100),
         'humedad' => rand(30, 80),
-        'presion' => rand(1000, 1030) + (rand(0, 99) / 100),
+        'presion' => rand(1010, 1025) + (rand(0, 99) / 100),
         'viento_velocidad' => rand(0, 25) + (rand(0, 99) / 100),
         'viento_direccion' => ['N', 'NE', 'E', 'SE', 'S', 'SW', 'W', 'NW'][rand(0, 7)],
         'riesgo_incendio' => ['Muy bajo', 'Bajo', 'Moderado', 'Alto', 'Muy alto'][rand(0, 4)],
