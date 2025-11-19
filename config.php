@@ -47,7 +47,7 @@ function sendEmail($to, $subject, $body) {
     
     try {
         $mail->isSMTP();
-        $mail->SMTPDebug = 0;
+        $mail->SMTPDebug = 0; // Sin debug
         $mail->Host = HOST;
         $mail->Port = PORT;
         $mail->SMTPAuth = SMTP_AUTH;
@@ -55,11 +55,13 @@ function sendEmail($to, $subject, $body) {
         $mail->Username = REMITENTE;
         $mail->Password = PASSWORD;
         
+        error_log("Configuración SMTP: Host=" . HOST . ", Port=" . PORT . ", User=" . REMITENTE);
+        
         $mail->setFrom(REMITENTE, NOMBRE);
         $mail->addAddress($to);
         
         $mail->isHTML(true);
-        $mail->Subject = $subject;
+        $mail->Subject = utf8_decode($subject);
         $mail->Body = $body;
         
         if ($mail->send()) {

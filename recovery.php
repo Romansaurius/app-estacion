@@ -26,7 +26,7 @@ if ($_POST) {
             $emailBody = "
                 <h3>Restablecimiento de contraseña</h3>
                 <p>Se ha iniciado el proceso de restablecimiento de contraseña. Para continuar haz clic en el siguiente botón:</p>
-                <a href='reset.php?token_action=$token_action' style='background:#00bfff;color:white;padding:10px;text-decoration:none;'>Click aquí para restablecer contraseña</a>
+                <a href='http://mattprofe.com.ar/alumno/9909/app-estacion/reset.php?token_action=$token_action' style='background:#00bfff;color:white;padding:10px;text-decoration:none;'>Click aquí para restablecer contraseña</a>
             ";
             sendEmail($user['email'], 'Restablecer contraseña - App Estación', $emailBody);
             

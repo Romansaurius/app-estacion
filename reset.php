@@ -37,7 +37,7 @@ if ($token_action) {
                         <p>Tu contraseña ha sido restablecida exitosamente.</p>
                         <p>IP: $ip</p>
                         <p>Navegador: $userAgent</p>
-                        <a href='blocked.php?token={$user['token']}' style='background:#ff4444;color:white;padding:10px;text-decoration:none;'>No fui yo, bloquear cuenta</a>
+                        <a href='http://mattprofe.com.ar/alumno/9909/app-estacion/blocked.php?token={$user['token']}' style='background:#ff4444;color:white;padding:10px;text-decoration:none;'>No fui yo, bloquear cuenta</a>
                     ";
                     sendEmail($user['email'], 'Contraseña restablecida - App Estación', $emailBody);
                     

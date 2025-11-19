@@ -36,7 +36,7 @@ if ($_POST) {
                 $emailBody = "
                     <h3>Bienvenido a App Estación</h3>
                     <p>Gracias por registrarte. Para activar tu cuenta haz clic en el siguiente botón:</p>
-                    <a href='validate.php?token_action=$token_action' style='background:#44ff44;color:black;padding:10px;text-decoration:none;'>Click aquí para activar tu usuario</a>
+                    <a href='http://mattprofe.com.ar/alumno/9909/app-estacion/validate.php?token_action=$token_action' style='background:#44ff44;color:black;padding:10px;text-decoration:none;'>Click aquí para activar tu usuario</a>
                 ";
                 sendEmail($email, 'Activar cuenta - App Estación', $emailBody);
                 

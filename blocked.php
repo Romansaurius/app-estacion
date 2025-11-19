@@ -19,7 +19,7 @@ if ($token) {
         $emailBody = "
             <h3>Cuenta bloqueada</h3>
             <p>Tu cuenta ha sido bloqueada por seguridad. Para cambiar tu contraseña haz clic en el siguiente botón:</p>
-            <a href='reset.php?token_action=$token_action' style='background:#ffa500;color:white;padding:10px;text-decoration:none;'>Click aquí para cambiar contraseña</a>
+            <a href='http://mattprofe.com.ar/alumno/9909/app-estacion/reset.php?token_action=$token_action' style='background:#ffa500;color:white;padding:10px;text-decoration:none;'>Click aquí para cambiar contraseña</a>
         ";
         sendEmail($user['email'], 'Cuenta bloqueada - App Estación', $emailBody);
         

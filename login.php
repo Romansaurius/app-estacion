@@ -33,7 +33,7 @@ if ($_POST) {
                         <h3>Inicio de sesión detectado</h3>
                         <p>IP: $ip</p>
                         <p>Navegador: $userAgent</p>
-                        <a href='blocked.php?token={$user['token']}' style='background:#ff4444;color:white;padding:10px;text-decoration:none;'>No fui yo, bloquear cuenta</a>
+                        <a href='http://mattprofe.com.ar/alumno/9909/app-estacion/blocked.php?token={$user['token']}' style='background:#ff4444;color:white;padding:10px;text-decoration:none;'>No fui yo, bloquear cuenta</a>
                     ";
                     sendEmail($user['email'], 'Inicio de sesión - App Estación', $emailBody);
                     
@@ -47,7 +47,7 @@ if ($_POST) {
                     <h3>Intento de acceso con contraseña inválida</h3>
                     <p>IP: $ip</p>
                     <p>Navegador: $userAgent</p>
-                    <a href='blocked.php?token={$user['token']}' style='background:#ff4444;color:white;padding:10px;text-decoration:none;'>No fui yo, bloquear cuenta</a>
+                    <a href='http://mattprofe.com.ar/alumno/9909/app-estacion/blocked.php?token={$user['token']}' style='background:#ff4444;color:white;padding:10px;text-decoration:none;'>No fui yo, bloquear cuenta</a>
                 ";
                 sendEmail($user['email'], 'Intento de acceso inválido - App Estación', $emailBody);
                 $error = 'Credenciales no válidas';
