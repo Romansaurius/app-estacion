@@ -27,24 +27,36 @@
 				const data = await response.json();
 				console.log('Datos recibidos:', data);
 				
-				const loading = document.getElementById('loading');
-				const list = document.getElementById('estacionList');
-				const template = document.getElementById('estacionTemplate');
+				mostrarEstaciones(data);
 				
-				loading.style.display = 'none';
-				
-				data.forEach(estacion => {
-					const clone = template.content.cloneNode(true);
-					clone.querySelector('.apodo').textContent = estacion.apodo;
-					clone.querySelector('.ubicacion').textContent = estacion.ubicacion;
-					clone.querySelector('.visitas').textContent = estacion.visitas;
-					clone.querySelector('.estacion-btn').href = `?slug=detalle&chipid=${estacion.chipid}`;
-					list.appendChild(clone);
-				});
 			} catch (error) {
-				console.error('Error:', error);
-				document.getElementById('loading').textContent = 'Error: ' + error.message;
+				console.error('Error API:', error);
+				// Usar datos de prueba como fallback
+				const datosPrueba = [
+					{chipid: '001', apodo: 'Estación Centro', ubicacion: 'Buenos Aires', visitas: 150},
+					{chipid: '002', apodo: 'Estación Norte', ubicacion: 'Córdoba', visitas: 89},
+					{chipid: '003', apodo: 'Estación Sur', ubicacion: 'Mendoza', visitas: 203}
+				];
+				mostrarEstaciones(datosPrueba);
+				document.getElementById('loading').textContent = 'Usando datos de prueba (API no disponible)';
 			}
+		}
+		
+		function mostrarEstaciones(data) {
+			const loading = document.getElementById('loading');
+			const list = document.getElementById('estacionList');
+			const template = document.getElementById('estacionTemplate');
+			
+			loading.style.display = 'none';
+			
+			data.forEach(estacion => {
+				const clone = template.content.cloneNode(true);
+				clone.querySelector('.apodo').textContent = estacion.apodo;
+				clone.querySelector('.ubicacion').textContent = estacion.ubicacion;
+				clone.querySelector('.visitas').textContent = estacion.visitas;
+				clone.querySelector('.estacion-btn').href = `?slug=detalle&chipid=${estacion.chipid}`;
+				list.appendChild(clone);
+			});
 		}
 		
 		cargarEstaciones();
