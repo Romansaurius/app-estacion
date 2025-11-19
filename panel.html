@@ -11,7 +11,7 @@
 <body>
     <div class="container">
         <div class="header">
-            <a href="index.html" class="back-btn">
+            <a href="index.php" class="back-btn">
                 <i class="fas fa-chevron-left"></i>
             </a>
             <div class="datetime">
@@ -22,90 +22,124 @@
         
         <div class="location">
             <i class="fas fa-map-marker-alt"></i>
-            <span id="ubicacion">Buenos Aires, Tortuguitas</span>
+            <span id="ubicacion">Cargando...</span>
+        </div>
+
+        <div class="tabs">
+            <button class="tab-btn active" data-tab="temperatura">Temperatura</button>
+            <button class="tab-btn" data-tab="humedad">Humedad</button>
+            <button class="tab-btn" data-tab="viento">Viento</button>
+            <button class="tab-btn" data-tab="presion">Presión</button>
+            <button class="tab-btn" data-tab="incendio">Riesgo</button>
         </div>
 
         <div class="main-content">
             <div class="left-panel">
-                <div class="temp-section">
-                    <div class="temp-header">
+                <div id="temperatura-panel" class="panel-section active">
+                    <div class="metric-header">
                         <i class="fas fa-thermometer-half"></i> TEMPERATURA
                     </div>
-                    <div class="temp-main">
-                        <span class="temp-value">25</span>
-                        <span class="temp-decimal">.30</span>
-                        <span class="temp-unit">°C</span>
+                    <div class="metric-main">
+                        <span id="temp-value" class="metric-value-large">--</span>
+                        <span class="metric-unit">°C</span>
                     </div>
-                    <div class="temp-minmax">
-                        <div class="temp-item">
-                            <span class="label">Máxima</span>
-                            <span class="value">28.30°C</span>
-                        </div>
-                        <div class="temp-item">
-                            <span class="label">Mínima</span>
-                            <span class="value">15.00°C</span>
-                        </div>
+                    <div class="chart-container">
+                        <canvas id="tempChart"></canvas>
                     </div>
                 </div>
 
-                <div class="sensation-section">
-                    <div class="sensation-header">
-                        <i class="fas fa-child"></i> SENSACIÓN
+                <div id="humedad-panel" class="panel-section">
+                    <div class="metric-header">
+                        <i class="fas fa-tint"></i> HUMEDAD
                     </div>
-                    <div class="sensation-main">
-                        <span class="sensation-value">0</span>
-                        <span class="sensation-decimal">.00</span>
-                        <span class="sensation-unit">°C</span>
+                    <div class="metric-main">
+                        <span id="humidity-value" class="metric-value-large">--</span>
+                        <span class="metric-unit">%</span>
                     </div>
-                    <div class="sensation-minmax">
-                        <div class="sensation-item">
-                            <span class="label">Máxima</span>
-                            <span class="value">0.00°C</span>
-                        </div>
-                        <div class="sensation-item">
-                            <span class="label">Mínima</span>
-                            <span class="value">0.00°C</span>
-                        </div>
+                    <div class="chart-container">
+                        <canvas id="humidityChart"></canvas>
                     </div>
                 </div>
 
-                <div class="chart-container">
-                    <canvas id="tempChart"></canvas>
+                <div id="viento-panel" class="panel-section">
+                    <div class="metric-header">
+                        <i class="fas fa-wind"></i> VIENTO
+                    </div>
+                    <div class="metric-main">
+                        <span id="wind-value" class="metric-value-large">--</span>
+                        <span class="metric-unit">Km/H</span>
+                        <div class="wind-direction">
+                            <i class="fas fa-compass"></i>
+                            <span id="wind-dir">--</span>
+                        </div>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="windChart"></canvas>
+                    </div>
+                </div>
+
+                <div id="presion-panel" class="panel-section">
+                    <div class="metric-header">
+                        <i class="fas fa-arrow-down"></i> PRESIÓN
+                    </div>
+                    <div class="metric-main">
+                        <span id="pressure-value" class="metric-value-large">--</span>
+                        <span class="metric-unit">hPa</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="pressureChart"></canvas>
+                    </div>
+                </div>
+
+                <div id="incendio-panel" class="panel-section">
+                    <div class="metric-header">
+                        <i class="fas fa-fire"></i> RIESGO DE INCENDIO
+                    </div>
+                    <div class="metric-main">
+                        <span id="fire-risk" class="metric-label-large">--</span>
+                    </div>
+                    <div class="chart-container">
+                        <canvas id="fireChart"></canvas>
+                    </div>
                 </div>
             </div>
 
             <div class="right-panel">
                 <div class="metric-card temp-card">
                     <i class="fas fa-thermometer-half"></i>
-                    <span class="metric-value">25°C</span>
+                    <span id="temp-card" class="metric-value">--°C</span>
                 </div>
 
                 <div class="metric-card fire-card">
                     <i class="fas fa-fire"></i>
-                    <span class="metric-label">Muy bajo</span>
+                    <span id="fire-card" class="metric-label">--</span>
                 </div>
 
                 <div class="metric-card humidity-card">
                     <i class="fas fa-tint"></i>
-                    <span class="metric-value">50%</span>
+                    <span id="humidity-card" class="metric-value">--%</span>
                 </div>
 
                 <div class="metric-card pressure-card">
                     <i class="fas fa-arrow-down"></i>
-                    <span class="metric-value">0hPa</span>
+                    <span id="pressure-card" class="metric-value">--hPa</span>
                 </div>
 
                 <div class="metric-card wind-card">
                     <i class="fas fa-wind"></i>
                     <div class="wind-info">
-                        <span class="metric-value">0Km/H</span>
+                        <span id="wind-card" class="metric-value">--Km/H</span>
                         <div class="wind-direction">
                             <i class="fas fa-compass"></i>
-                            <span>Indeterminado</span>
+                            <span id="wind-dir-card">--</span>
                         </div>
                     </div>
                 </div>
             </div>
+        </div>
+
+        <div class="update-info">
+            Última actualización: <span id="last-update">--</span>
         </div>
     </div>
 

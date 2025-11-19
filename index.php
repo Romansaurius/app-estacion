@@ -1,18 +1,20 @@
-<?php 
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESTACIONES</title>
+    <link rel="stylesheet" href="styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <h1 class="title">ESTACIONES</h1>
+        <div id="estaciones-list" class="estaciones-list">
+            <!-- Las estaciones se cargarán aquí dinámicamente -->
+        </div>
+    </div>
 
-	include 'env.php';
-	include 'librarys/lagarto/Lagarto.php';
-
-	$section = "landing";
-
-	if(isset($_GET['slug'])){
-		$section = $_GET['slug'];
-	}
-
-	if(!file_exists('controllers/'.$section.'Controller.php')){
-		$section = "error";
-	}
-
-	include 'controllers/'.$section.'Controller.php';
-
- ?>
+    <script src="script.js"></script>
+</body>
+</html>

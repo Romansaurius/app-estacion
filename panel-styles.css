@@ -199,6 +199,74 @@ body {
     grid-column: span 2;
 }
 
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+    justify-content: center;
+}
+
+.tab-btn {
+    background: rgba(0, 0, 0, 0.3);
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    border-radius: 25px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.tab-btn.active {
+    background: rgba(255, 255, 255, 0.2);
+    transform: scale(1.05);
+}
+
+.panel-section {
+    display: none;
+}
+
+.panel-section.active {
+    display: block;
+}
+
+.metric-header {
+    font-size: 18px;
+    margin-bottom: 20px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #ffa500;
+}
+
+.metric-main {
+    display: flex;
+    align-items: baseline;
+    margin-bottom: 30px;
+    gap: 10px;
+}
+
+.metric-value-large {
+    font-size: 72px;
+    font-weight: bold;
+}
+
+.metric-label-large {
+    font-size: 32px;
+    font-weight: bold;
+    color: #ff4444;
+}
+
+.metric-unit {
+    font-size: 36px;
+}
+
+.update-info {
+    text-align: center;
+    margin-top: 20px;
+    color: #ccc;
+    font-size: 14px;
+}
+
 @media (max-width: 768px) {
     .main-content {
         grid-template-columns: 1fr;
@@ -210,5 +278,9 @@ body {
     
     .wind-card {
         grid-column: span 1;
+    }
+    
+    .tabs {
+        flex-wrap: wrap;
     }
 }
